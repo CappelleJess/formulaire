@@ -20,6 +20,9 @@
             $code_postal = (int) $code_postal;
             $localite = (String) trim($localite);
             $pays = (String) trim($pays);
+            $telephone = (int) $telephone;
+            $gsm = (int) $gsm;
+            $fax = (int) $fax;
 
                 if(empty($prénom)){
                     $valid = false;
@@ -87,13 +90,24 @@
                 if(empty($pays)){
                     $valid = false;
                     $err_pays = "Veuillez renseigner ce champs!";
+
+                if(empty($telephone)){
+                    $valid = false;
+                }
+                if(empty($gsm)){
+                    $valid = false;
+                }
+                if(empty($fax)){
+                    $valid = false;
+                }
+
                 }
                 if($valid) {
                     $date_inscription = date("Y-m-d");
 
-                    $req = $BDD->prepare("INSERT INTO inscription(prénom, nom, email, genre, date_naissance, lieu_naissance, adresse, numero, code_postal, localite, pays, date_inscription VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $req = $BDD->prepare("INSERT INTO inscription(prénom, nom, email, genre, date_naissance, lieu_naissance, adresse, numero, code_postal, localite, pays, telephone, gsm, fax, date_inscription VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-                    $req->execute(array($prénom, $nom, $email, $genre, $date_naissance, $lieu_naissance, $adresse, $numero, $code_postal, $localite, $pays, $date_inscription));
+                    $req->execute(array($prénom, $nom, $email, $genre, $date_naissance, $lieu_naissance, $adresse, $numero, $code_postal, $localite, $pays, $telephone, $gsm, $fax, $date_inscription));
                     }
                 }   
             }
@@ -235,6 +249,30 @@
                         }
                     ?>
                     <input type="text" name="pays" placeholder="Pays">
+                </div>
+                <div>
+                    <?php
+                        if(isset($err_telephone)){
+                            echo $err_telephone;
+                        }
+                    ?>
+                    <input type="text" name="telephone" placeholder="Téléphone">
+                </div>
+                <div>
+                    <?php
+                        if(isset($err_gsm)){
+                            echo $err_gsm;
+                        }
+                    ?>
+                    <input type="text" name="gsm" placeholder="GSM">
+                </div>
+                <div>
+                    <?php
+                        if(isset($err_fax)){
+                            echo $err_fax;
+                        }
+                    ?>
+                    <input type="text" name="fax" placeholder="Fax">
                 </div>
             </section>
             <input type="submit" name="inscription" value="S'inscrire">
