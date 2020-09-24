@@ -1,0 +1,12 @@
+.bg-light {
+	background-color: #74a6b3 !important;
+	box-shadow: 5px 0 0 rgba(0, 0, 0, 1);
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #765991;
+}
+
+.navbar-light .navbar-nav .nav-link:hover .nav-link:focus {
+	color: white
+}
