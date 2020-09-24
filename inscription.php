@@ -38,7 +38,6 @@
 
                 if(empty($genre)){
                     $valid = false;
-                    $err_genre = "Veuillez renseigner ce champs!";
                 }
 
                 if($jour <= 0 || $jour < 31){
@@ -123,7 +122,7 @@
                             echo $err_prénom;                        
                         } 
                     ?>
-                    <input type="text" name="prénom" placeholder="Prénom">
+                    <input type="text" name="prénom" placeholder="Prénom*">
                 </div>
                 <div>
                     <?php
@@ -131,7 +130,7 @@
                             echo $err_nom;                        
                         } 
                     ?>
-                    <input type="text" name="nom" placeholder="Nom">
+                    <input type="text" name="nom" placeholder="Nom*">
                 </div>
                 <div>
                     <?php
@@ -139,7 +138,7 @@
                             echo $err_email;                        
                         } 
                     ?>
-                    <input type="text" name="email" placeholder="Adresse E-mail">
+                    <input type="text" name="email" placeholder="Adresse E-mail*">
                 </div>
                 <div>
                     <?php
@@ -203,8 +202,7 @@
                             echo $err_adresse;
                         }
                     ?>
-                    <input type="text" name="adresse" placeholder="Adresse">
-                        <script type="text/javascript"  src="" data-src="https://maps.googleapis.com/maps/api/js?libraries=places&key=PUT_YOUR_OWN_KEY_HERE"></script>class="lozad"<script type="text/javascript" src="" data-src="autocomplete.js"></script>
+                    <input type="text" name="adresse" placeholder="Adresse*">
                 </div>
                 <div>
                     <?php
@@ -212,7 +210,7 @@
                             echo $err_numero;
                         }
                     ?>
-                    <input type="text" name="numero" placeholder="N°">
+                    <input type="text" name="numero" placeholder="N°*">
                 </div>
                 <div>
                     <?php
@@ -220,7 +218,7 @@
                             echo $err_code_postal;
                         }
                     ?>
-                    <input type="text" name="code_postal" placeholder="Code Postal">
+                    <input type="text" name="code_postal" placeholder="Code Postal*">
                 </div>
                 <div>
                     <?php
@@ -228,7 +226,7 @@
                             echo $err_localite;
                         }
                     ?>
-                    <input type="text" name="localite" placeholder="Localité">
+                    <input type="text" name="localite" placeholder="Localité*">
                 </div>
                 <div>
                     <?php
