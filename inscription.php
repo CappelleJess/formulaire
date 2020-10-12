@@ -181,7 +181,8 @@
                         <?php 
                             for($i = 1; $i<= 31; $i++){
                         ?>
-                        <option value="<?= $i ?>"><?= $i ?></option>
+                        <option style="display:none;" selected>Jour</option>
+                        <option value="Jour; <?= $i ?>"><?= $i ?></option>
                         <?php
                             }
                         ?>
@@ -190,7 +191,8 @@
                         <?php 
                             for($i = 1; $i<= 12; $i++){
                         ?>
-                        <option value="<?= $i ?>"><?= $i ?></option>
+                        <option style="display:none;" selected>Mois</option>
+                        <option value="Mois; <?= $i ?>"><?= $i ?></option>
                         <?php
                             }
                         ?>
@@ -199,7 +201,8 @@
                         <?php 
                             for($i = 1960; $i<= 2002; $i++){
                         ?>
-                        <option value="<?= $i ?>"><?= $i ?></option>
+                        <option style="display:none;" selected>Année</option>
+                        <option value="Année; <?= $i ?>"><?= $i ?></option>
                         <?php
                             }
                         ?>
@@ -283,11 +286,13 @@
                             echo $err_occupation;                        
                         } 
                     ?>
-                    <select name="occupation">
+                    <label>Occupation:</label>
+                    <select name="occupation" id="occupation" onChange="getElementById('OCCUPATION_ID').value = this.value">
                         <option style="display:none;" selected="">Occupation</option>
                         <option value="2">Etudiant</option>
                         <option value="3">Travailleur</option>
                         <option value="4">Demandeur d'emploi</option>
+                        <input type="text" name="OCCUPATION_ID" id="OCCUPATION_ID" value=""/>
                     </select>
                 </div>
             </section>
@@ -295,6 +300,7 @@
             <input type="button" onclick="history.back()" value="Retour">
         </form>
 
+        <script src='jquery-3.2.1.min.js'></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
