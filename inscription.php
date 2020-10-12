@@ -23,6 +23,7 @@
             $telephone = (int) $telephone;
             $gsm = (int) $gsm;
             $fax = (int) $fax;
+            $occupation = (String) trim($occupation);
 
                 if(empty($prénom)){
                     $valid = false;
@@ -90,7 +91,7 @@
                 if(empty($pays)){
                     $valid = false;
                     $err_pays = "Veuillez renseigner ce champs!";
-
+                }
                 if(empty($telephone)){
                     $valid = false;
                 }
@@ -100,14 +101,17 @@
                 if(empty($fax)){
                     $valid = false;
                 }
-
+                if(empty($occupation)){
+                    $valid = false;
+                    $err_occupation = "Veuillez renseigner ce champs!";
                 }
+
                 if($valid) {
                     $date_inscription = date("Y-m-d");
 
-                    $req = $BDD->prepare("INSERT INTO inscription(prénom, nom, email, genre, date_naissance, lieu_naissance, adresse, numero, code_postal, localite, pays, telephone, gsm, fax, date_inscription VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $req = $BDD->prepare("INSERT INTO inscription(prénom, nom, email, genre, date_naissance, lieu_naissance, adresse, numero, code_postal, localite, pays, telephone, gsm, fax, occupation, date_inscription VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-                    $req->execute(array($prénom, $nom, $email, $genre, $date_naissance, $lieu_naissance, $adresse, $numero, $code_postal, $localite, $pays, $telephone, $gsm, $fax, $date_inscription));
+                    $req->execute(array($prénom, $nom, $email, $genre, $date_naissance, $lieu_naissance, $adresse, $numero, $code_postal, $localite, $pays, $telephone, $gsm, $fax, $occupation, $date_inscription));
                     }
                 }   
             }
@@ -161,14 +165,13 @@
                         } 
                     ?>
                     <select name="genre">
-                        <option style="display:none"></option>
+                        <option style="display:none;" selected>Genre</option>
                         <option value="2">Femme</option>
                         <option value="3">Homme</option>
                         <option value="4">Autre</option>
                     </select>
                 </div>                
                 <div>
-
                     <?php
                         if(isset($err_date)){
                             echo $err_date;                        
@@ -273,6 +276,19 @@
                         }
                     ?>
                     <input type="text" name="fax" placeholder="Fax">
+                </div>
+                <div>
+                    <?php
+                        if(isset($err_occupation)){
+                            echo $err_occupation;                        
+                        } 
+                    ?>
+                    <select name="occupation">
+                        <option style="display:none;" selected="">Occupation</option>
+                        <option value="2">Etudiant</option>
+                        <option value="3">Travailleur</option>
+                        <option value="4">Demandeur d'emploi</option>
+                    </select>
                 </div>
             </section>
             <input type="submit" name="inscription" value="S'inscrire">
